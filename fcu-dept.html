@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>請選擇學院</p>
+
+<select id="college-list" onchange="collegechange()">
+
+</select>
+<p>當你選擇學院後,下列選單會列出屬於該學院的所有學院</p>	
+
+<select id="department-list">
+
+</select>
+<br>
+
+<script>
+var colleges = ["商學院","工學院","建設學院"];
+var business_depts =["會計系","統計系","財稅系"];
+var engerring_depts =["工工系","航太系","化工系"];
+var construction_depts =["土木系","水利系","土管系"];
+var option = "";
+getlist(colleges,"college-list");
+getlist(business_depts,"department-list");
+function collegechange(){
+	var index = $("#college-list").val();
+	if(index == 0)getlist(business_depts,"department-list");
+	if(index == 1)getlist(engerring_depts,"department-list");
+	if(index == 2)getlist(construction_depts,"department-list");
+}
+function getlist(list,listid){
+$("#"+listid).empty();
+option = "";
+for (var i = 0;i < list.length;i++){
+	option = option + '<option value="'+ i +'">'+ list[i] +'</option>';
+	}
+$("#"+listid).append(option);
+}
+
+</script>
+
+</body>
+</html>
